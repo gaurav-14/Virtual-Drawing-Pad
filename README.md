@@ -3,8 +3,8 @@
 A simple application of computer vision using OpenCV library in ubuntu 14.04 LTS. Also works in Ubuntu 16.04.
 
 Installation Required:
-OS: Ubuntu 14.04 or 16.04 (Tested for these two)
-OpenCV Library: https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
+1. OS: Ubuntu 14.04 or 16.04 (Tested for these two)
+2. OpenCV Library: https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
 
 The program uses thresholding function to detect marker in its environment.Then centroid is
 determined using moments of image. The value corresponding to pixel is changed giving desired color.
