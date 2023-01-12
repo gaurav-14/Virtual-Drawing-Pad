@@ -1,17 +1,27 @@
 name: Simple echo job
 
 on:
-  push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+        #push:
+        #branches: [ $default-branch ]
+        #pull_request:
+        #branches: [ $default-branch ]
+   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: [self-hosted, linux]
+    runs-on:
+      - self-hosted
+      - linux
 
     steps:
       - uses: actions/checkout@v3
 
       - name: Run a one-line script
-        run: echo Hello from VDP repo
+        run: |
+           echo Hello from VDP repo!
+           sleep 10
+           echo Trial Done, GoodBye!
+
+      - name: Run a multi-line script
+        run: |
+           echo "${{ github.workspace }}"
