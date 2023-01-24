@@ -26,6 +26,6 @@ jobs:
         run: |
            echo "${{ github.workspace }}"
 
-      - name: pre-commit.ci lite
-        uses: pre-commit-ci/lite-action@v1.0.0
-        if: always()
+
+
+
