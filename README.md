@@ -21,7 +21,7 @@ $ ./obj
 The program uses thresholding function to detect marker in its environment.Then centroid is
 determined using moments of image. The value corresponding to pixel is changed giving desired color.
 
-## What can the program do ? ## 
+## What can the program do ? ##
 
 1.  Marker size can be increased to give strokes of different width.
 2.  Any color can be chosen for the stroke.
