@@ -37,10 +37,12 @@ jobs:
           #   ]
 
   complete-the-work:
+    name: do the work of echoing on ec2 instance of AWS
+    needs:
+      - start-runner
     runs-on:
       - self-hosted
       - ec2-runner
-
     steps:
       - uses: actions/checkout@v3
 
