@@ -24,10 +24,10 @@ jobs:
         with:
           mode: start
           github-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          ec2-image-id: ami-0a189e1999e9725ac
+          ec2-image-id: ami-0a398548428a9f105
           ec2-instance-type: t2.micro
-          subnet-id: subnet-05ed86aab8c67a714
-          security-group-id: sg-0d56cb43594c0c88f
+          subnet-id: subnet-0daf538fd7cd3a0a4
+          security-group-id: sg-09d5b13ec85c9a87f
           runner-home-dir: /home/ubuntu/actions-runner
           # iam-role-name: my-role-name # optional, requires additional permissions
           # aws-resource-tags: > # optional, requires additional permissions
@@ -42,7 +42,7 @@ jobs:
       - start-runner
     runs-on:
       - self-hosted
-      - ec2-runner
+      - ${{ needs.start-runner.outputs.label }}
     steps:
       - uses: actions/checkout@v3
 
