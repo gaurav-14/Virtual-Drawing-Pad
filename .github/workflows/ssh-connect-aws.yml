@@ -1,4 +1,4 @@
-name: Simple echo job
+name: Echo job using runner as a service
 
 on:
    workflow_dispatch:
