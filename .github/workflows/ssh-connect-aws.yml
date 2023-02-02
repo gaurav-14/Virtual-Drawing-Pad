@@ -1,0 +1,54 @@
+name: Simple echo job
+
+on:
+   workflow_dispatch:
+
+jobs:
+
+  start-instance:
+    name: start EC2 instance
+    runs-on: ubuntu-latest
+    steps:
+      # Name of step
+      - name: Start AWS EC2
+        # Run AWS Command on the GitHub Hosted runner which stops the instance using AWS authentication stored in GitHub Secrets (see below how to add)
+        run: |
+          aws ec2 start-instances --instance-ids ${{secrets.CON_AWS_EC2_INSTANCE_ID }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.CON_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CON_AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.CON_AWS_REGION }}
+
+  complete-the-work:
+    name: do the work of echoing on ec2 instance of AWS
+    needs:
+      - start-instance
+    runs-on:
+      - self-hosted
+      - aws-ec2-runner
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Greet ec2
+        run: |
+           echo Hello ec2 from VDP repo!
+           sleep 10
+           echo Trial Done, GoodBye!
+
+  stop-instance:
+    name: Stop self-hosted EC2 runner
+    needs:
+      - start-runner # required to get output from the start-runner job
+      - complete-the-work # required to wait when the main job is done
+    runs-on: ubuntu-latest
+    if: ${{ always() }} # required to stop the runner even if the error happened in the previous jobs
+    steps:
+    # Name of step
+      - name: Stop AWS EC2
+        # Run AWS Command on the GitHub Hosted runner which stops the instance using AWS authentication stored in GitHub Secrets (see below how to add)
+        run: |
+          aws ec2 stop-instances --instance-ids ${{secrets.CON_AWS_EC2_INSTANCE_ID }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.CON_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CON_AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.CON_AWS_REGION }}
