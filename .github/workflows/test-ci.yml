@@ -48,7 +48,7 @@ jobs:
 
       - name: Run a one-line script
         run: |
-           echo Hello ec2 from VDP repo!
+           echo Hello AWS!
            sleep 10
            echo Trial Done, GoodBye!
 
