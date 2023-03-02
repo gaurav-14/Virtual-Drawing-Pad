@@ -1,0 +1,14 @@
+name: Echo job using runner as a service
+
+on:
+   workflow_dispatch:
+
+jobs:
+  ls-in-current-dir:
+    runs-on: self-hosted
+    name: list files
+    steps:
+      - name: list using ls command
+        run: |
+             echo "Printing current dir content:"
+             ls
