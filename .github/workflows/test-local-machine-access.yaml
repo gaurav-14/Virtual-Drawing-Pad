@@ -1,4 +1,4 @@
-name: Print local machine data
+name: Print runner machine data
 
 on:
    workflow_dispatch:
@@ -8,7 +8,8 @@ jobs:
     runs-on: self-hosted
     name: list files
     steps:
+      - uses: actions/checkout@v3
       - name: list using ls command
         run: |
              echo "Printing current dir content:"
-             ls
+             ls -la
