@@ -12,4 +12,4 @@ jobs:
       - name: list using ls command
         run: |
              echo "Printing current dir content:"
-             ls -la /home/
+             ls -la /home/gaurav/
