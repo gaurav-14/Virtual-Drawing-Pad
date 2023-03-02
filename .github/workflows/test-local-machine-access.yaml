@@ -1,4 +1,4 @@
-name: Echo job using runner as a service
+name: Print local machine data
 
 on:
    workflow_dispatch:
