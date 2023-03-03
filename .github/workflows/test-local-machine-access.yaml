@@ -27,3 +27,13 @@ jobs:
         run: |
              echo "printing SSH_AUTH_SOCK variable:"
              echo "${{env.SSH_AUTH_SOCK}}"
+             
+  check-persist-ssh-agent:
+      runs-on: self-hosted
+      name: check ssh-agent in diff job
+      steps:
+         - uses: actions/checkout@v3
+         - name: print ssh agent socket if exists
+           run: |
+                echo "printing SSH_AUTH_SOCK variable in diff job:"
+                echo "${{env.SSH_AUTH_SOCK}}"
