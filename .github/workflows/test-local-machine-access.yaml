@@ -30,6 +30,7 @@ jobs:
              
   check-persist-ssh-agent:
       runs-on: self-hosted
+      needs: [ls-in-current-dir]
       name: check ssh-agent in diff job
       steps:
          - uses: actions/checkout@v3
