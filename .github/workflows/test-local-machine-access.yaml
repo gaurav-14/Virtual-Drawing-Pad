@@ -17,3 +17,8 @@ jobs:
         run: |
              echo "printing GITHUB_WORKSPACE:"
              echo "${GITHUB_WORKSPACE}"
+             
+      - name: print SSH_AUTH_SOCK env variables
+        run: |
+             echo "printing SSH_AUTH_SOCK variable:"
+             echo "${{env.SSH_AUTH_SOCK}}"
