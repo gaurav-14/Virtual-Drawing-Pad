@@ -13,3 +13,7 @@ jobs:
         run: |
              echo "Printing current dir content:"
              ls -la /home/gaurav/
+      - name: print Default github env variables
+        run: |
+             echo "printing GITHUB_WORKSPACE:"
+             echo "${GITHUB_WORKSPACE}"
