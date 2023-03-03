@@ -18,6 +18,11 @@ jobs:
              echo "printing GITHUB_WORKSPACE:"
              echo "${GITHUB_WORKSPACE}"
              
+      - name: webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{secrets.REPO1}}
+             
       - name: print SSH_AUTH_SOCK env variables
         run: |
              echo "printing SSH_AUTH_SOCK variable:"
